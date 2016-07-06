@@ -32,7 +32,6 @@ namespace OExam.Server.Controllers
         // GET: api/UserManager/5
         public OperationResult Get(int id)
         {
-
             OperationResult oresult = new OperationResult(EOperationType.Success, "successmessage"+id);
             return oresult;
         }
