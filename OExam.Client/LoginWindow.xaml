@@ -17,7 +17,7 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="用户登录" />
+        <TextBlock Grid.Row="0" Text="用户登录" Style="{StaticResource Header1}"/>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <TextBlock Text="用户名"/>
             <TextBox Text="{Binding LUser.LoginName}" Width="200"/>

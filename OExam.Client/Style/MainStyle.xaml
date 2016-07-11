@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:OExam.Client.Style">
+    <Style x:Key="Header1" >
+        <Setter Property="TextBlock.FontSize" Value="22"/>
+        <Setter Property="TextBlock.FontWeight" Value="Bold"/>
+    </Style>
+</ResourceDictionary>
