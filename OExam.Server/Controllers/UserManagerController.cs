@@ -29,7 +29,15 @@ namespace OExam.Server.Controllers
             //OperationResult oresult = new OperationResult(EOperationType.Success, "successmessage"+username);
             return oresult; 
         }
-
+        ///// <summary>
+        ///// 访问路径 http://localhost:29279/aaa/bb
+        ///// </summary>
+        ///// <returns></returns>
+        //[Route("aaa/bb")]
+        //public string getuser()
+        //{
+        //    return "success";
+        //}
         // GET: api/UserManager/5
         public OperationResult Get(int id)
         {
