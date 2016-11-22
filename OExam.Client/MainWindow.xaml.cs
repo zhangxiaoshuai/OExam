@@ -41,12 +41,14 @@ namespace OExam.Client
             if (mgroups == null)
                 return;
 
+            //循环创建菜单组
             foreach (var g in mgroups)
             {
                 LinkGroup lg = new LinkGroup();
                 lg.DisplayName = g.Display;
                 if (g.Pages == null)
                     continue;
+                //循环创建单个页面链接
                 foreach (var p in g.Pages)
                 {
                     Link l = new Link();
@@ -63,6 +65,7 @@ namespace OExam.Client
             if (titles == null)
                 return;
 
+            //循环创建右上标题链接
             foreach (var p in titles)
             {
                 Link l = new Link();
