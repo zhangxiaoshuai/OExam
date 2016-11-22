@@ -33,6 +33,8 @@ namespace OExam.Client.Service
         {
             var c = new HttpClient();
             c.BaseAddress = ServiceAddress;
+            //添加TOKEN
+            //c.DefaultRequestHeaders.Add("token", "aaa");
             return c;
         }
         /// <summary>
@@ -47,6 +49,7 @@ namespace OExam.Client.Service
                 try
                 {
                     HttpResponseMessage response = await c.GetAsync(webFunAddress);
+                    
                     OperationResult<UserData> t = await response.Content.ReadAsAsync<OperationResult<UserData>>();
                     callback(t);
                 }
@@ -77,7 +80,7 @@ namespace OExam.Client.Service
         {
             using (var c = CreateClient())
             {
-                HttpResponseMessage message = await c.PutAsJsonAsync<T>(webFunAddress, model);
+                HttpResponseMessage message = await c.PutAsJsonAsync(webFunAddress, model);
             }
         }
         protected async void DeleteModel(string webFunAddress)

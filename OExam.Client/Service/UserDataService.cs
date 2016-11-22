@@ -24,6 +24,7 @@ namespace OExam.Client.Service
         /// <param name="callback"></param>
         public void CheckAndGetUser(LoginUser luser,Action<OperationResult<UserData>> callback)
         {
+            //string requestUri = "/api/UserManager?username=" + luser.LoginName + "&password=" + luser.LoginPassword + "&roletype=" + luser.LoginType+"&token=1";
             string requestUri = "/api/UserManager?username=" + luser.LoginName + "&password=" + luser.LoginPassword + "&roletype=" + luser.LoginType;
             //string requestUri = "/api/UserManager?id=1323" ;
             base.GetModel(requestUri, callback);

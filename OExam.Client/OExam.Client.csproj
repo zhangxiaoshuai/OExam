@@ -190,11 +190,11 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\api\OExam\Component.Tools\Component.Tools.csproj">
+    <ProjectReference Include="..\Component.Tools\Component.Tools.csproj">
       <Project>{4a4e5131-6aee-4664-878b-505a6183ce56}</Project>
       <Name>Component.Tools</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\api\OExam\OExam.Application.ViewModels\OExam.App.ViewModels.csproj">
+    <ProjectReference Include="..\OExam.Application.ViewModels\OExam.App.ViewModels.csproj">
       <Project>{e6382351-da0b-4f0c-ac5f-b34fdd3b7932}</Project>
       <Name>OExam.App.ViewModels</Name>
     </ProjectReference>
