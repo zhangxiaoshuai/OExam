@@ -55,7 +55,7 @@ namespace OExam.Client.Service
                 }
                 catch (Exception ex)
                 {
-                    callback(new OperationResult<UserData>(EOperationType.Exception, "服务器异常"));
+                    callback(new OperationResult<UserData>(EOperationType.Exception, "服务器异常" + ex.Message));
                 }
 
                 //WebClient client = new WebClient();
