@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OExam.Server.Filter;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -19,6 +20,14 @@ namespace OExam.Server
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            //注入 response handler
+            //config.MessageHandlers.Add(new HttpResponseHandlerHelp());
+            //添加权限认证过滤器
+            config.Filters.Add(new AuthFilter());
+
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
+            
         }
     }
 }

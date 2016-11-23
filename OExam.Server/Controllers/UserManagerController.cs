@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Controllers;
 
 namespace OExam.Server.Controllers
 {
@@ -17,8 +18,9 @@ namespace OExam.Server.Controllers
         {
             _userMessage = new UserMessage();
         }
+
         // GET: api/UserManager
-        
+
         public OperationResult<UserData> Get(string username,string password,int roletype)
         {
             LoginUser luser = new LoginUser();
