@@ -33,8 +33,11 @@ namespace OExam.Client.Service
         {
             var c = new HttpClient();
             c.BaseAddress = ServiceAddress;
-            //添加TOKEN
-            //c.DefaultRequestHeaders.Add("token", "aaa");
+            //c.DefaultRequestHeaders.Accept.Clear();
+            //c.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            //在header中添加TOKEN
+            c.DefaultRequestHeaders.Add(AuthToken.TOKENNAME, AuthToken.GetToken());
+
             return c;
         }
         /// <summary>
@@ -50,8 +53,42 @@ namespace OExam.Client.Service
                 {
                     HttpResponseMessage response = await c.GetAsync(webFunAddress);
                     
-                    OperationResult<UserData> t = await response.Content.ReadAsAsync<OperationResult<UserData>>();
-                    callback(t);
+                    if(response.IsSuccessStatusCode)
+                    {
+                        OperationResult<UserData> t = await response.Content.ReadAsAsync<OperationResult<UserData>>();
+                        callback(t);
+                    }
+                    else
+                    {
+                        string resmessage = "";
+                        switch (response.StatusCode)
+                        {
+                            //case HttpStatusCode.OK:
+                            //    OperationResult<UserData> t = await response.Content.ReadAsAsync<OperationResult<UserData>>();
+                            //    callback(t);
+                            //    break;
+                            case HttpStatusCode.BadGateway:
+                                resmessage = "错误的响应";
+                                break;
+                            case HttpStatusCode.BadRequest:
+                                resmessage = "服务器未能识别请求";
+                                break;
+                            case HttpStatusCode.Forbidden:
+                                resmessage = "服务器拒绝请求";
+                                break;
+                            case HttpStatusCode.GatewayTimeout:
+                                resmessage = "响应超时";
+                                break;
+                            default:
+                                resmessage = response.ReasonPhrase;
+                                break;
+                        }
+
+                        //if (resmessage.Length > 0)
+                            callback(new OperationResult<UserData>(EOperationType.Exception, "服务器连接失败：" + resmessage));
+                    }
+
+                    
                 }
                 catch (Exception ex)
                 {
