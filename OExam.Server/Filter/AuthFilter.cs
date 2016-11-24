@@ -38,24 +38,29 @@ namespace OExam.Server.Filter
                 return Task.Factory.StartNew(()=> { });
             }
 
-
-            string tokenheader = "token";
             var header = actionContext.Request.Headers;
-            if (header.Contains(tokenheader))
+            if (header.Contains(TokenCache.TOKENNAME))
             {
-                var tokenvals = header.GetValues(tokenheader).ToList();
+                var tokenvals = header.GetValues(TokenCache.TOKENNAME).ToList();
                 
                 if(tokenvals.Count()>0)
                 {
-                    string token = tokenvals[0];
-                    //添加TOKEN验证
-                    //if(!CacheToken.TokenExist(token))
-                    //{
-                    actionContext.Response = new System.Net.Http.HttpResponseMessage(System.Net.HttpStatusCode.Forbidden);
-                    //}
+                    string[] tokenmsg = tokenvals[0].Split(TokenCache.TOKENSPLIT);
+                    if (tokenmsg.Length > 1)
+                    {
+                        string username = tokenmsg[0];
+                        string token = tokenmsg[1];
+
+                        //添加TOKEN验证
+                        if (TokenCache.CheckTokenExist(username, token))
+                        {
+                            return base.OnActionExecutingAsync(actionContext, cancellationToken);
+                        }
+                    }
+                    
                 }
             }
-
+            actionContext.Response = new System.Net.Http.HttpResponseMessage(System.Net.HttpStatusCode.Gone);
             return base.OnActionExecutingAsync(actionContext, cancellationToken);
         }
     }

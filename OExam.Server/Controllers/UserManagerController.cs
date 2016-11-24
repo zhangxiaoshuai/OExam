@@ -31,6 +31,12 @@ namespace OExam.Server.Controllers
             luser.LoginType = roletype;
             OperationResult<UserData> oresult = _userMessage.Login(luser);
             //OperationResult oresult = new OperationResult(EOperationType.Success, "successmessage"+username);
+            //登录成功存储令牌，并返回给客户端
+            if(oresult.ResultType == EOperationType.Success)
+            {
+                oresult.Message = username + TokenCache.TOKENSPLIT + TokenCache.SaveToken(username);
+            }
+
             return oresult; 
         }
         ///// <summary>

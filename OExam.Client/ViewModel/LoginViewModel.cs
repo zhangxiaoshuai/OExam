@@ -28,11 +28,14 @@ namespace OExam.Client.ViewModel
                     if(oresult.AppentData != null)
                     {
                         //UserData udata = new UserData();
-                        
+
+                        AuthToken.SaveToken(oresult.Message);
+
                         MainWindow mwindow = new MainWindow(oresult.AppentData);
                         mwindow.Show();
                         mwindow.Closed += Mwindow_Closed;
                         Showing = Visibility.Hidden;
+
                     }
                     else
                     {
