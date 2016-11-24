@@ -93,6 +93,7 @@
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\UserManagerController.cs" />
     <Compile Include="Filter\AuthFilter.cs" />
+    <Compile Include="Filter\TokenCache.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

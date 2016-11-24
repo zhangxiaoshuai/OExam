@@ -24,7 +24,7 @@ namespace OExam.Server
             //注入 response handler
             //config.MessageHandlers.Add(new HttpResponseHandlerHelp());
             //添加权限认证过滤器
-            config.Filters.Add(new AuthFilter());
+            config.Filters.Add(new AuthFilterAttribute());
 
             config.Formatters.Remove(config.Formatters.XmlFormatter);
             

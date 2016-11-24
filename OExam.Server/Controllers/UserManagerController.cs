@@ -1,6 +1,7 @@
 ﻿using Component.Tools;
 using OExam.App.Business;
 using OExam.App.ViewModels;
+using OExam.Server.Filter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ using System.Web.Http.Controllers;
 
 namespace OExam.Server.Controllers
 {
+    
     public class UserManagerController : ApiController
     {
         UserMessage _userMessage;
@@ -20,7 +22,7 @@ namespace OExam.Server.Controllers
         }
 
         // GET: api/UserManager
-
+        [Anonymous]
         public OperationResult<UserData> Get(string username,string password,int roletype)
         {
             LoginUser luser = new LoginUser();
