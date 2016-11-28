@@ -39,6 +39,7 @@ namespace OExam.Server.Filter
             }
 
             var header = actionContext.Request.Headers;
+            //添加TOKEN验证
             if (header.Contains(TokenCache.TOKENNAME))
             {
                 var tokenvals = header.GetValues(TokenCache.TOKENNAME).ToList();
@@ -50,8 +51,7 @@ namespace OExam.Server.Filter
                     {
                         string username = tokenmsg[0];
                         string token = tokenmsg[1];
-
-                        //添加TOKEN验证
+                        
                         if (TokenCache.CheckTokenExist(username, token))
                         {
                             return base.OnActionExecutingAsync(actionContext, cancellationToken);
@@ -60,6 +60,7 @@ namespace OExam.Server.Filter
                     
                 }
             }
+            //验证未通过，返回请求资源不可用
             actionContext.Response = new System.Net.Http.HttpResponseMessage(System.Net.HttpStatusCode.Gone);
             return base.OnActionExecutingAsync(actionContext, cancellationToken);
         }

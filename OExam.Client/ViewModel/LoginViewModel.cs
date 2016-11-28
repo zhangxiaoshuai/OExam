@@ -29,7 +29,7 @@ namespace OExam.Client.ViewModel
                     {
                         //UserData udata = new UserData();
 
-                        AuthToken.SaveToken(oresult.Message);
+                        AuthToken.Token = oresult.Message;
 
                         MainWindow mwindow = new MainWindow(oresult.AppentData);
                         mwindow.Show();

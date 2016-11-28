@@ -36,7 +36,7 @@ namespace OExam.Client.Service
             //c.DefaultRequestHeaders.Accept.Clear();
             //c.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             //在header中添加TOKEN
-            c.DefaultRequestHeaders.Add(AuthToken.TOKENNAME, AuthToken.GetToken());
+            c.DefaultRequestHeaders.Add(AuthToken.TOKENNAME, AuthToken.Token);
 
             return c;
         }

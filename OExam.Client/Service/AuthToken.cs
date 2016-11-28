@@ -14,20 +14,19 @@ namespace OExam.Client.Service
         public static string TOKENNAME = "token";
         private static string _tokenValue = "";
         /// <summary>
-        /// 获取已经保存的token
+        /// 令牌信息
         /// </summary>
-        /// <returns></returns>
-        public static string GetToken()
+        public static string Token
         {
-            return _tokenValue;
+            get
+            {
+                return _tokenValue;
+            }
+            set
+            {
+                _tokenValue = value;
+            }
         }
-        /// <summary>
-        /// 保存token
-        /// </summary>
-        /// <param name="token"></param>
-        public static void SaveToken(string token)
-        {
-            _tokenValue = token;
-        }
+
     }
 }
